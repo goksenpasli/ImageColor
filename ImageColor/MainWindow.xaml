@@ -1,0 +1,57 @@
+﻿<Window x:Class="ImageColor.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:ImageColor"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800" Height="450"
+    mc:Ignorable="d" WindowState="Maximized">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+            <Button Content="RESİM AÇ" Grid.Row="0" Click="Button_Click" />
+            <Slider x:Name="Sld"
+                Grid.Row="1"
+                Maximum="255" Minimum="1" />
+            <Button Content="UYGULA" Grid.Row="2" Click="Button_Click_1" />
+            <Image x:Name="Img"  PreviewMouseMove="Grid_PreviewMouseMove"
+                Grid.Row="3"  
+                MouseLeftButtonDown="Img_MouseLeftButtonDown" MouseMove="Img_MouseMove" />
+            <Grid Grid.Row="4"
+                Width="100" Height="100"
+               ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Canvas x:Name="cnv"
+                    Grid.RowSpan="2" Grid.ColumnSpan="2"
+                    IsHitTestVisible="False">
+                    <Rectangle x:Name="rct"
+                        Width="{Binding ElementName=cnv, Path=ActualWidth}"
+                        Height="{Binding ElementName=cnv, Path=ActualHeight}"
+                        Stroke="Black" StrokeThickness="1">
+                        <Rectangle.Fill>
+                            <VisualBrush Viewbox="0,0,25,25" ViewboxUnits="Absolute" Viewport="0,0,1,1" ViewportUnits="RelativeToBoundingBox" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Canvas>
+            </Grid>
+        </Grid>
+        <Image x:Name="Img2" Grid.Column="1" />
+    </Grid>
+</Window>
